@@ -1,0 +1,45 @@
+{% extends "blog2/base.html" %}
+{% load i18n %}
+
+{% block entry %}
+
+  <div class="post">
+    <h2><a href="{% url "news_detail" slug=object.slug %}">{{ object.title }}</br><img src="{{object.image.url }}" class="img-responsive" alt="title photo" width="98%" height="98%" /></a></h2>
+    <p class="meta">{{ object.body }}
+     
+      {{ object.created }} |<span>
+       <a href="">{{  object.tags.all|join:", " }} </a></span>
+    </p>
+    
+
+    <hr>
+    <a class="btn btn-default" href="{% url 'add_comment_to_post'  pk=object.pk %}">Add comment</a>
+{% for comment in entry.comments.all %}
+    <div class="comment">
+    <p>Comments</p>
+    
+        <div class="date">{{ comment.created}}</div>
+        <strong>{{ comment.author }},</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>Be the first to  comment </p>
+{% endfor %}
+  </div>
+  <nav>
+          <!--{% if is_paginated %}
+            <ul class="pager">
+            {% if page_obj.has_previous %}
+           <li>
+            
+              <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}{% endif %}-->
+
+  	<ul class="pager">
+    
+  		<li><a href="/">Previous</a></li>
+  		<!--<li><a href="#">Next</a></li>-->
+  	</ul>
+  </nav>
+{% endblock entry %}

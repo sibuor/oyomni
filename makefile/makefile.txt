@@ -1,0 +1,5 @@
+contains simple deployment tasks and macros. For more complex deployments you may want to rely on tools like
+1-invoke
+2-paver
+3-fabric
+4-etc..docker? ansible?, salstack?

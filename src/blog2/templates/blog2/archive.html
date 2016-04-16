@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block blog_entries %}
+
+{% for object in object_list %}
+<ul>
+      <h5><li>{{ object.created | date:"M j, Y " }}: <a href="{% url "news_detail" slug=object.slug %}">{{ object.title }}</a></li></h5> 
+   
+    </ul>
+     
+{% endfor %}
+
+<!--<nav>
+    <ul class="pager">
+      <li><a href="/">Previous</a></li>
+      <li><a href="#">Next</a></li>
+    </ul>
+  </nav>-->
+{% endblock %}

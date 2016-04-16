@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block category %}
+
+{% for object in object_list %}
+<ul>
+      <h5><li>{{ object.created | date:"M j, Y " }}: <a href="{% url "news_detail" slug=object.slug %}">{{ object.title }} {{object.tags }}</a></li></h5> 
+   
+    </ul>
+     
+{% endfor %}
+
+ <!--<nav>
+          {% if is_paginated %}
+            <ul class="pager">
+            {% if page_obj.has_previous %}
+           <li>
+            
+              <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+          
+          {% if page_obj.has_next %}
+              <li>
+
+              <a href="?page={{ page_obj.next_page_number }}">Next</a>
+              </li>
+              {% endif %}
+              {% else %}-->
+              <!--<p>next page not available</p>-->
+              {% endif %}
+            </ul>
+          </nav>
+
+<!--<nav>
+  	<ul class="pager">
+  		<li><a href="/">Previous</a></li>
+  		<li><a href="#">Next</a></li>
+  	</ul>
+  </nav>-->
+
+{% endblock category %}

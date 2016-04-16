@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load youtube_thumbnail %}
+<img src="{% youtube_thumbnail_url 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' %}">
+
+{% block blog_entries %}
+
+{% for object in object_list %}
+  <div class="post">
+    <h2><a href="{% url "news_detail" slug=object.slug %}">{{ object.title }}<img src="{{object.image.url }}" width="120px"height="120px" class="pull-left "alt="title photo"  /></a></h2>{{object.title_detail}}
+    
+    <p class="meta">
+      {{ object.created }} by: {{ object.author }} |
+      <a href="">{{  object.tags.all|join:", " }} </a></p>
+    </br></hr>
+    
+  </div>
+
+{% endfor %}
+{% endblock %}
